@@ -33,10 +33,16 @@ namespace Cirrious.MvvmCross.Plugins.Messenger
 
         private void Dispose(bool isDisposing)
         {
+            _disposeMe();
             if (isDisposing)
             {
-                _disposeMe();
+                // dispose managed objects if any
             }
+        }
+        
+        ~MvxSubscriptionToken()
+        {
+            Dispose(false);
         }
     }
 }
